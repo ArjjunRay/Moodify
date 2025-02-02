@@ -7,7 +7,7 @@ from collections import Counter
 from spotify_playlist import create_spotify_playlist  # Import the function
 
 # Define the correct paths to the model files
-MODEL_PATH = "/Users/arjunray/Desktop/DeepEMotion/models/"
+MODEL_PATH = "/Users/arjunray/Desktop/Moodify/models/"
 PROTOTXT_PATH = os.path.join(MODEL_PATH, "deploy.prototxt")
 MODEL_WEIGHTS_PATH = os.path.join(MODEL_PATH, "res10_300x300_ssd_iter_140000.caffemodel")
 

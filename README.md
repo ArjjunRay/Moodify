@@ -11,6 +11,7 @@ Randomization & Variety – Solved repetitive playlists by shuffling songs and u
 ## Challenges we ran into
 Getting Emotion Detection Right – The AI sometimes struggled with subtle expressions or poor lighting, requiring fine-tuning.
 Avoiding Repetitive Playlists – Spotify’s API returned the same songs unless we adjusted search queries. We fixed this by increasing song limits and randomizing results.
+Only runs on Python 3.10 or below
 ## Accomplishments that we're proud of
 Seamlessly integrating AI & music—a real-world use case for emotion recognition.
  Building a working prototype—code that actually creates Spotify playlists based on mood!

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moodify</title>
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <div class="popup-shell">
+      <div class="backdrop"></div>
+      <header class="hero reveal">
+        <div class="hero-copy">
+          <p class="eyebrow">Moodify v__APP_VERSION__</p>
+          <h1>Read the face. Shape the soundtrack.</h1>
+          <p class="hero-text">
+            Mood-aware Spotify playlists with a darker UI and gesture control that runs on the web player.
+          </p>
+        </div>
+        <button id="open-options" class="ghost-button" type="button">Settings</button>
+      </header>
+
+      <section class="panel reveal delay-1" id="auth-panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Spotify Access</p>
+            <h2>Secure account connection</h2>
+          </div>
+          <span id="auth-badge" class="badge muted">Disconnected</span>
+        </div>
+
+        <div id="auth-copy" class="panel-copy">
+          Add your Spotify client ID, whitelist the generated redirect URI, then sign in with PKCE.
+        </div>
+
+        <div class="stack">
+          <label class="field">
+            <span>Spotify client ID</span>
+            <input id="client-id-input" type="text" placeholder="Paste your Spotify app client ID" />
+          </label>
+
+          <label class="field readonly">
+            <span>Redirect URI to whitelist</span>
+            <div class="readonly-value" id="redirect-uri"></div>
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button id="save-client-id" class="primary-button" type="button">Save Client ID</button>
+          <button id="connect-spotify" class="secondary-button" type="button">Connect Spotify</button>
+          <button id="disconnect-spotify" class="ghost-button" type="button">Disconnect</button>
+        </div>
+      </section>
+
+      <section class="panel reveal delay-2">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Emotion Scanner</p>
+            <h2>Read mood with temporal smoothing</h2>
+          </div>
+          <span id="scanner-state" class="badge muted">Idle</span>
+        </div>
+
+        <div class="scanner-grid">
+          <div class="camera-stage">
+            <video id="camera-feed" playsinline muted></video>
+            <canvas id="camera-overlay"></canvas>
+            <div class="camera-vignette"></div>
+            <div class="progress-rail">
+              <div id="scan-progress" class="progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="scanner-copy">
+            <p id="scanner-copy">
+              Click scan to run a multi-frame read instead of a single lucky snapshot. Moodify weighs facial blendshapes over time to reduce noise.
+            </p>
+            <div class="button-row">
+              <button id="start-scan" class="primary-button" type="button">Scan My Mood</button>
+              <button id="stop-scan" class="ghost-button" type="button">Stop</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="detected-summary" class="detected-summary hidden"></div>
+      </section>
+
+      <section class="panel reveal delay-3">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Playlist Direction</p>
+            <h2>Pick the mood you want to launch</h2>
+          </div>
+          <span id="playlist-state" class="badge muted">Waiting</span>
+        </div>
+
+        <div id="mood-grid" class="mood-grid"></div>
+
+        <div class="footnote">
+          Moodify builds from your Spotify long-term listening: top artists, top tracks, and inferred top genres from the last year.
+        </div>
+      </section>
+
+      <section class="panel reveal delay-4">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Spotify Web Player</p>
+            <h2>Gesture controller</h2>
+          </div>
+          <span id="gesture-state" class="badge muted">Spotify tab not checked</span>
+        </div>
+
+        <div class="gesture-grid">
+          <div class="gesture-tip">Point right: next</div>
+          <div class="gesture-tip">Point left: previous</div>
+          <div class="gesture-tip">Point up: volume up</div>
+          <div class="gesture-tip">Point down: volume down</div>
+          <div class="gesture-tip">Open palm: resume or replay</div>
+        </div>
+
+        <div class="button-row">
+          <button id="open-spotify" class="secondary-button" type="button">Open Spotify</button>
+          <button id="focus-gesture-overlay" class="ghost-button" type="button">Show Gesture HUD</button>
+        </div>
+      </section>
+
+      <section class="panel reveal delay-5" id="result-panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Last Build</p>
+            <h2>Playlist result</h2>
+          </div>
+        </div>
+
+        <div id="playlist-result" class="result-card empty">
+          Your playlist summary will land here after you pick a mood.
+        </div>
+      </section>
+    </div>
+
+    <script src="./popup.js"></script>
+  </body>
+</html>

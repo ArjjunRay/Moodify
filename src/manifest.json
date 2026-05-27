@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Moodify",
+  "version": "2.0.0",
+  "description": "Emotion-aware Spotify playlist generation and webcam gesture controls for the Spotify web player.",
+  "permissions": ["identity", "storage", "tabs"],
+  "host_permissions": [
+    "https://accounts.spotify.com/*",
+    "https://api.spotify.com/*",
+    "https://i.scdn.co/*",
+    "https://open.spotify.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Moodify"
+  },
+  "options_page": "options/options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://open.spotify.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*", "models/*", "wasm/*"],
+      "matches": ["https://open.spotify.com/*"]
+    }
+  ]
+}

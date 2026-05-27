@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moodify Settings</title>
+    <link rel="stylesheet" href="./options.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="settings-card">
+        <p class="eyebrow">Moodify v__APP_VERSION__</p>
+        <h1>Spotify setup and defaults</h1>
+        <p class="lede">
+          Moodify uses Spotify PKCE auth. The client ID is safe to store here, but the redirect URI must be added to your Spotify app dashboard exactly as shown.
+        </p>
+
+        <div class="settings-grid">
+          <label class="field">
+            <span>Spotify client ID</span>
+            <input id="client-id-input" type="text" placeholder="Paste your Spotify app client ID" />
+          </label>
+
+          <label class="field readonly">
+            <span>Redirect URI to whitelist</span>
+            <div id="redirect-uri" class="readonly-value"></div>
+          </label>
+
+          <label class="field small">
+            <span>Playlist visibility</span>
+            <select id="playlist-visibility">
+              <option value="private">Private</option>
+              <option value="public">Public</option>
+            </select>
+          </label>
+
+          <label class="field small">
+            <span>Playlist size</span>
+            <input id="playlist-size" type="number" min="20" max="50" step="1" />
+          </label>
+
+          <label class="field small">
+            <span>Volume step</span>
+            <input id="volume-step" type="number" min="2" max="20" step="1" />
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button id="save-settings" class="primary-button" type="button">Save Settings</button>
+          <button id="connect-spotify" class="secondary-button" type="button">Connect Spotify</button>
+          <button id="disconnect-spotify" class="ghost-button" type="button">Disconnect</button>
+        </div>
+
+        <div id="settings-status" class="status-card">
+          Waiting for setup.
+        </div>
+
+        <ol class="steps">
+          <li>Create a Spotify app in the Spotify developer dashboard.</li>
+          <li>Add the redirect URI above to that app exactly.</li>
+          <li>Save the client ID here.</li>
+          <li>Connect Spotify and approve the requested scopes.</li>
+          <li>Open <code>https://open.spotify.com</code> and use the Moodify popup.</li>
+        </ol>
+      </section>
+    </main>
+
+    <script src="./options.js"></script>
+  </body>
+</html>

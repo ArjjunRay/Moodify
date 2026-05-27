@@ -1,3 +1,10 @@
-SPOTIFY_CLIENT_ID = "3389894a17f9475c9edf7a0a2b32d6de"
-SPOTIFY_CLIENT_SECRET = "f17af6851db9416bbf72587e2483ede4"
+"""
+Legacy prototype config.
+
+Do not store real Spotify secrets in this repository.
+The Chrome extension uses Spotify PKCE instead, so only a public client ID is needed.
+"""
+
+SPOTIFY_CLIENT_ID = "replace-me"
+SPOTIFY_CLIENT_SECRET = "replace-me"
 SPOTIFY_REDIRECT_URI = "http://localhost:8888/callback"
